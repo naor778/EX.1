@@ -65,20 +65,20 @@ public class Ex1 {
      */
     public static boolean isNumber (String a) {
         boolean ans = false;
-        if (a == null || a.isEmpty() || a.charAt(0) == '-') {
+        if (a == null || a.isEmpty() || a.charAt(0) == '-') {     //chak if the String is empty / Null
             return ans;
         }
-        char split = 'b';
-        int ofSplit = a.indexOf(split);
+        char split = 'b';// char split = the char that i need to split the string whan i meet it
+        int ofSplit = a.indexOf(split);//convert it to the int of the index of the split chat that is = to 'b'
         if (ofSplit == (-1)) {
             String Number = a;
-            int base = 10;
+            int base = 9;
             for (int i = 0; i < Number.length(); i = i + 1) {
                 char p = Number.charAt(i);
                 int Num = valueOfChar(p);
-                if (Num >= 0 && Num <= 16) {
+                if (Num >= 0 && Num <= 9) {
                     ans = true;
-                }
+                }else {ans=false;}
             }
             return ans;
         } else {

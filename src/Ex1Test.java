@@ -49,12 +49,12 @@ public class Ex1Test {
      */
         @Test
         void isNumber() {
-            String[] ok = {"10G", "56", "10112", "ABCDEFG","5b6"};
+            String[] ok = {"56", "10112","5b6","ABbG","01b2","1","99"};
             for (int i = 0; i < ok.length; i = i + 1) {
                 boolean okNumber = Ex1.isNumber(ok[i]);
                 assertTrue(okNumber);
             }
-            String[] NotOk = {""," ","-3b5","3b3","5b11","10b13","null","b2","0b1","123b","GbG","3 b4","53-12b9","5b5","65b4" };
+            String[] NotOk = {"10G","A","a",""," ","-3b5","3b3","5b11","10b13","null","b2","0b1","123b","GbG","3 b4","53-12b9","5b5","65b4","ABCDEFG","@34b5","1234b11" };
             for (int i = 0; i < NotOk.length; i = i + 1) {
               boolean NotokNumber = Ex1.isNumber(NotOk[i]);
                 assertFalse(NotokNumber);

@@ -50,16 +50,32 @@ public class Ex1Test {
             String str = Ex1.int2Number(x, b);
             assertEquals(str, "10201b3");
         }
-      String num2 = "11b2";
-        if (Ex1.isNumber(num2)==true){
+        String num2 = "11b2";
+        if (Ex1.isNumber(num2) == true) {
             int x = Ex1.number2Int(num2);
             char y = 'A';
             int b = Ex1.valueOfChar(y);
-            String str1 = Ex1.int2Number(x,b);
-            assertEquals(str1,"3b10");
+            String str1 = Ex1.int2Number(x, b);
+            assertEquals(str1, "3");
+        }
+
+        String num3 = "58";
+        if (Ex1.isNumber(num3) == true) {
+            int x = Ex1.number2Int(num3);
+            char y = 'A';
+            int b = Ex1.valueOfChar(y);
+            String str1 = Ex1.int2Number(x, b);
+            assertEquals(str1, "58");
+        }
+        String num4 = "ABCDbG";
+        if (Ex1.isNumber(num4) == true) {
+            int x = Ex1.number2Int(num4);
+            char y = 'G';
+            int b = Ex1.valueOfChar(y);
+            String str1 = Ex1.int2Number(x, b);
+            assertEquals(str1, "ABCDbG");
         }
     }
-
         @Test
         void maxIndexTest() {
             String[] arr={"3bA","50","1101b2","FbG"};
@@ -115,6 +131,11 @@ public class Ex1Test {
          if(Ex1.isNumber(num5)== true) {
          int x = Ex1.number2Int(num5);
          assertEquals(x, 22875);}
+        String num6 = "11b";
+        if(Ex1.isNumber(num6)== false) {
+            int x = Ex1.number2Int(num6);
+            assertEquals(x, -1);
+        }
 
     }
     @Test

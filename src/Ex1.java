@@ -144,17 +144,21 @@ public class Ex1 {
                 if (base < 2 || base > 16) {
                     return ans;
                 }
+               String convert= "0123456789ABCDEFG";
                 if (num == 0) {
-                    ans += "" + 0 + "" + base;
+                    ans += "" + 0 + "" + convert.charAt(base);
                     return ans;
                 } else {
                     while (num>0){
                         int u = num%base;
                         num=num/base;
-                        ans = u + ans ;
+                        ans = convert.charAt(u) + ans ;
 
+                    }if (base==10) {
+                        ans = ans;
+                        return ans;
                     }
-                      ans=ans+"b"+base;
+                      ans=ans+"b"+convert.charAt(base);
                     return ans;
                 }
             }

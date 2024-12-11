@@ -25,6 +25,26 @@ public class Ex1 {
         String result = "";
         char split = 'b';
         int ofSplit = num.indexOf(split);
+                if(ofSplit==-1) {
+                    String Number = num;
+                    int Base = 10;
+                    for (int i = 0; i < Number.length(); i = i + 1) {
+                        char y = Number.charAt(i);
+                        int x = valueOfChar(y);
+                        int Bas = 10;
+                        result += "" + x;
+                        if (i == (Number.length() - 1)) {
+                            for (int j = 0; j < result.length(); j = j + 1) {
+                                int c = ((result.length()) - (result.length()) + j);
+                                char f = result.charAt(result.length() - (j + 1));
+                                int d = valueOfChar(f);
+                                ans = (int) (d * (Math.pow(Bas, c)));
+                                finel += ans;
+
+                            }
+                        }
+                    }return finel;
+                }else {
         String Number = num.substring(0, ofSplit);
         String Base = num.substring(ofSplit + 1);
         for ( int i =0;i<Number.length();i=i+1) {
@@ -34,29 +54,22 @@ public class Ex1 {
             int Bas = valueOfChar(l);
             result += "" + x;
             if (i == (Number.length() - 1)) {
-                for (int j = 0; j < result.length(); j = j + 1) {
+                for (int j = 0; j < Number.length(); j = j + 1) {
                     int c = ((result.length()) - (result.length()) + j);
-                    char f = result.charAt(result.length() - (j + 1));
+                    char f = Number.charAt(Number.length() - (j + 1));
                     int d = valueOfChar(f);
                     ans1 = (int) (d * (Math.pow(Bas, c)));
                     finel += ans1;
 
                 }
-                return ans1;
+                return finel;
             }
-        }
-        }
+        }}
+        }else {ans=-1;}
+
         return ans;
     }
 
-
-    public static String[] SplitString (String a ){
-        char b = 'b';
-        int y = a.indexOf(b);
-        String Number = a.substring(0,y);
-        String Base = a.substring(y+1,a.length());
-        return new String[] {Number,Base};
-    }
 
     /**
      * This static function checks if the given String (g) is in a valid "number" format.
@@ -65,6 +78,7 @@ public class Ex1 {
      */
     public static boolean isNumber (String a) {
         boolean ans = false;
+
         if (a == null || a.isEmpty() || a.charAt(0) == '-') {     //chak if the String is empty / Null
             return ans;
         }
@@ -100,8 +114,9 @@ public class Ex1 {
                 int Num1 = valueOfChar(n);
                 char m = Base.charAt(0);
                 int Bas1 = valueOfChar(m);
-                if (Num1 >= Bas1 ||Bas1<=1) {
+                if (Num1 >= Bas1 || Bas1<=1||Num1==Bas1) {
                     ans = false;
+                    return ans;
                 } else if (Number.length() != 0 && Base.length() != 0 && ofSplit != (-1)) {
                     if(Num1<Bas1 && Num1!=(-1)) {
                         ans=true;
@@ -124,12 +139,24 @@ public class Ex1 {
              * @param base the basis [2,16]
              * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
              */
-            public static String int2Number ( int num, int base){
+            public static String int2Number ( int num, int base) {
                 String ans = "";
-                // add your code here
+                if (base < 2 || base > 16) {
+                    return ans;
+                }
+                if (num == 0) {
+                    ans += "" + 0 + "" + base;
+                    return ans;
+                } else {
+                    while (num>0){
+                        int u = num%base;
+                        num=num/base;
+                        ans = u + ans ;
 
-                ////////////////////
-                return ans;
+                    }
+                      ans=ans+"b"+base;
+                    return ans;
+                }
             }
 
             /**
@@ -140,9 +167,14 @@ public class Ex1 {
              */
             public static boolean equals (String n1, String n2){
                 boolean ans = true;
-                // add your code here
+                if(Ex1.isNumber(n1)==true&&Ex1.isNumber(n2)==true){
+                    int x=Ex1.number2Int(n1);
+                    int y=Ex1.number2Int(n2);
+                    if (x==y){
+                        return ans;
+                    }else {ans=false;}
+                }
 
-                ////////////////////
                 return ans;
             }
 
@@ -156,17 +188,25 @@ public class Ex1 {
              */
             public static int maxIndex (String[]arr){
                 int ans = 0;
-                // add your code here
+                for(int i=0;i < arr.length;i=i+1){
+                   if(Ex1.isNumber(arr[i])==true){
+                       int x = Ex1.number2Int(arr[i]);
+                       int y = Ex1.number2Int(arr[ans]);
+                       if(x>y){
+                           ans=i;
+                       }
+                   }
+                }
 
-                ////////////////////
+
                 return ans;
             }
 
             /**
              *  convert the char to int num   for exsample if i get char of '7' its bring back int = 7
              * and if i get char ='G'  its return int = 16;
-             * @param y  = char that is 0-9 or A-G     char y = 'A';
-             * @return int  y = 10 ;
+             * @param y  = char that is 0-9 or A-G
+             * @return   char y = 'A';   int  y = 10 ;
              */
             public static int valueOfChar ( char y){
                 int ans = -1;
@@ -187,6 +227,7 @@ public class Ex1 {
                 } else if (y == 'G') {
                     ans = 16;
                 }
+
 
                 return ans;
             }

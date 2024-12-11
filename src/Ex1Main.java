@@ -18,10 +18,10 @@ public class Ex1Main {
             num1 = sc.next();
             if(num1.equals(quit)){break;}
             while (Ex1.isNumber(num1) != true) {
-                if (Ex1.isNumber(num1) == true && !num1.equals(quit)) {
+                if(Ex1.isNumber(num1)==true) {
                     System.out.println("num1=" + num1 + " is number:" + Ex1.isNumber(num1) + ",value:" + Ex1.number2Int(num1));
                     break;
-                } else {
+                }else {
                     System.out.println("num1=" + num1 + " is number:" + Ex1.isNumber(num1) + ",value:" + Ex1.number2Int(num1));
                     System.out.println("ERR: num1 is in the wrong format!" + "(" + num1 + ")");
                 }
